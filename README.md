@@ -12,3 +12,5 @@ The branch labels are prefixed in the order they were developed (e.g. 01, 02, ..
 
 Choose the branch from the github list of branches to see the readme for that branch.
 
+## Branch 01-maven-server-module
+Create a maven _server_ module. Moved the code and the pom dependencies to this module.
