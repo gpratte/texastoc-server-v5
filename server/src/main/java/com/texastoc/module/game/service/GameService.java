@@ -2,6 +2,7 @@ package com.texastoc.module.game.service;
 
 import com.texastoc.exception.BLException;
 import com.texastoc.exception.ErrorDetail;
+import com.texastoc.module.game.event.GameEventProducer;
 import com.texastoc.module.game.model.Game;
 import com.texastoc.module.game.model.GamePlayer;
 import com.texastoc.module.game.repository.GameRepository;
@@ -29,18 +30,17 @@ public class GameService {
 
   private final GameRepository gameRepository;
   private final GameHelper gameHelper;
-  //;;!! private final GameEventProducer gameEventProducer;
+  private final GameEventProducer gameEventProducer;
 
   private PlayerModule playerModule;
   private SeasonModule seasonModule;
   private QuarterlySeasonModule quarterlySeasonModule;
 
-  // ;;!!  public GameService(GameRepository gameRepository, GameHelper gameHelper,
-//      GameEventProducer gameEventProducer) {
-  public GameService(GameRepository gameRepository, GameHelper gameHelper) {
+  public GameService(GameRepository gameRepository, GameHelper gameHelper,
+      GameEventProducer gameEventProducer) {
     this.gameRepository = gameRepository;
     this.gameHelper = gameHelper;
-    //;;!!this.gameEventProducer = gameEventProducer;
+    this.gameEventProducer = gameEventProducer;
   }
 
   @Transactional
@@ -186,7 +186,7 @@ public class GameService {
     if (game.getPlayers() != null) {
       Collections.sort(game.getPlayers());
     }
-    // ;;!!gameEventProducer.notifyGameFinalized(id, game.getSeasonId(), game.getQSeasonId(), true);
+    gameEventProducer.notifyGameFinalized(id, game.getSeasonId(), game.getQSeasonId(), true);
     gameHelper.sendUpdatedGame();
     gameHelper.sendGameSummary(id, game.getSeasonGameNum());
     return game;
