@@ -26,6 +26,7 @@ import java.util.stream.StreamSupport;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,7 +35,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class PlayerService implements PlayerModule {
 
   private final PlayerRepository playerRepository;
-  //;;!! private final BCryptPasswordEncoder bCryptPasswordEncoder;
+  private final BCryptPasswordEncoder bCryptPasswordEncoder;
   private final AuthorizationHelper authorizationHelper;
 
   private NotificationModule notificationModule;
@@ -43,11 +44,10 @@ public class PlayerService implements PlayerModule {
   // Only one server so save the forgot password codes here
   private Map<String, String> forgotPasswordCodes = new HashMap<>();
 
-  //  ;;!! public PlayerService(PlayerRepository playerRepository,
-//      BCryptPasswordEncoder bCryptPasswordEncoder, AuthorizationHelper authorizationHelper) {
-  public PlayerService(PlayerRepository playerRepository, AuthorizationHelper authorizationHelper) {
+  public PlayerService(PlayerRepository playerRepository,
+      BCryptPasswordEncoder bCryptPasswordEncoder, AuthorizationHelper authorizationHelper) {
     this.playerRepository = playerRepository;
-//    this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     this.authorizationHelper = authorizationHelper;
   }
 
@@ -166,7 +166,7 @@ public class PlayerService implements PlayerModule {
     forgotPasswordCodes.remove(email);
 
     Player playerToUpdate = playerRepository.findByEmail(email).get(0);
-    //;;!!playerToUpdate.setPassword(bCryptPasswordEncoder.encode(password));
+    playerToUpdate.setPassword(bCryptPasswordEncoder.encode(password));
     playerToUpdate.setPassword(password);
 
     playerRepository.save(playerToUpdate);
