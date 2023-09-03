@@ -1,6 +1,8 @@
 package com.texastoc.module.notification.connector;
 
 import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -26,7 +28,7 @@ public class SMSConnector {
       initialzed = true;
       executorService = Executors.newFixedThreadPool(20);
     } catch (Exception e) {
-      //;;!! log.error("Could not initialize Twilio", e);
+      log.error("Could not initialize Twilio", e);
       initialzed = false;
     }
   }
@@ -50,14 +52,13 @@ public class SMSConnector {
 
     @Override
     public Void call() throws Exception {
-      //;;!!
-//      try {
-//        Message.creator(new PhoneNumber("+1" + phone), // to
-//            new PhoneNumber(twilioPhone), // from
-//            body).create();
-//      } catch (Exception e) {
-//        log.error("Could not send SMS", e);
-//      }
+      try {
+        Message.creator(new PhoneNumber("+1" + phone), // to
+            new PhoneNumber(twilioPhone), // from
+            body).create();
+      } catch (Exception e) {
+        log.error("Could not send SMS", e);
+      }
       return null;
     }
   }
