@@ -15,6 +15,6 @@ The branch labels are prefixed in the order they were developed (e.g. 01, 02, ..
 
 Choose the branch from the github list of branches to see the readme for that branch.
 
-## Branch 02-create-games-on-startup
+## Branch 03-publish-subscribe
 
-Brought in enough code from v4 so that dummy data will be created when the server starts.
+Resurrect spring integration for messaging when a game ends.
