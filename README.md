@@ -15,6 +15,7 @@ The branch labels are prefixed in the order they were developed (e.g. 01, 02, ..
 
 Choose the branch from the github list of branches to see the readme for that branch.
 
-## Branch 06-email-sms
+## Branch 07-login
 
-Resurrect the ability to send emails and text messages
+Resurrect authentication and authorization and migrate to spring security 6.
+Resurrected all the REST controllers as well.
