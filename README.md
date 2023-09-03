@@ -15,6 +15,6 @@ The branch labels are prefixed in the order they were developed (e.g. 01, 02, ..
 
 Choose the branch from the github list of branches to see the readme for that branch.
 
-## Branch 05-aop
+## Branch 06-email-sms
 
-Resurrect aspect oriented programming (aop) for logging.
+Resurrect the ability to send emails and text messages
