@@ -15,6 +15,6 @@ The branch labels are prefixed in the order they were developed (e.g. 01, 02, ..
 
 Choose the branch from the github list of branches to see the readme for that branch.
 
-## Branch 04-clock
+## Branch 05-aop
 
-Resurrect the clock service
+Resurrect aspect oriented programming (aop) for logging.
