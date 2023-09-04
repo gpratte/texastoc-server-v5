@@ -1,12 +1,12 @@
 package com.texastoc.module.game.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import io.micrometer.common.util.StringUtils;
 import java.util.Objects;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.annotation.Id;
 
 @Data

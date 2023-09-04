@@ -8,6 +8,9 @@
 # testing
 /coverage
 
+# local build/run
+/server/logs/
+
 # production
 /build
 build.tgz

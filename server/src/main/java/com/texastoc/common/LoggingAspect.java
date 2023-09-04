@@ -12,6 +12,9 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+/**
+ * Logs module requests/responses
+ */
 @Aspect
 @Order(1)
 @Slf4j

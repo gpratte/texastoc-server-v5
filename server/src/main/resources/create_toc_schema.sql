@@ -339,7 +339,7 @@ CREATE TABLE toc_config
     regular_buy_in_cost     int NOT NULL,
     regular_rebuy_cost      int NOT NULL,
     regular_rebuy_toc_debit int NOT NULL,
-    year                    int NOT NULL,
+    yearr                   int NOT NULL,
     settings                int NOT NULL,
     PRIMARY KEY (id)
 );
