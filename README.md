@@ -15,6 +15,6 @@ The branch labels are prefixed in the order they were developed (e.g. 01, 02, ..
 
 Choose the branch from the github list of branches to see the readme for that branch.
 
-## Branch 08-mysql
+## Branch 09-caching
 
-Now have an **h2** and a **mysql** maven profile so can run against either database.
+Resurrect caching the season.
