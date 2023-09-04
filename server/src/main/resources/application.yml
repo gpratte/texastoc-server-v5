@@ -1,19 +1,23 @@
+server:
+  error:
+    include-message: always
+    include-binding-errors: always
+
 db:
   h2: true
   mysql: false
   # There are other fields but they should be set as environment variables.
-  schema: true
-  seed: true
-  populate: true
+  # schema: false
+  # seed: false
+  # populate: false
+
+test:
+  allowMultipleSeasons: false
 
 spring:
   h2:
     console:
       enabled: true
-
-test:
-  allowMultipleSeasons: false
-  allowChaos: false
 
 payouts:
   fileName: payouts-percentages.json

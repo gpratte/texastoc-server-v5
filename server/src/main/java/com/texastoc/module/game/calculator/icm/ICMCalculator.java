@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * See https://github.com/gpratte/icm-calculator
+ */
 public class ICMCalculator {
 
   /**

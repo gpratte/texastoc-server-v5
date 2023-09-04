@@ -7,6 +7,9 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Only run when the mysql spring profile is not present
+ */
 @Configuration
 public class DatabaseConfig {
 

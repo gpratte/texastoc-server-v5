@@ -15,6 +15,9 @@ The branch labels are prefixed in the order they were developed (e.g. 01, 02, ..
 
 Choose the branch from the github list of branches to see the readme for that branch.
 
-## Branch 09-caching
+## Branch 10-miscellaneous
 
-Resurrect caching the season.
+Resurrect miscellaneous files. For example
+
+* configure logback and logging filter
+* configure jackson 

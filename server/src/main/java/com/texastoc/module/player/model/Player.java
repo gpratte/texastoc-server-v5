@@ -1,7 +1,6 @@
 package com.texastoc.module.player.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import io.micrometer.common.util.StringUtils;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +8,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.MappedCollection;
 

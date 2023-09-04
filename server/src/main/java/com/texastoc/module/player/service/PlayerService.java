@@ -24,7 +24,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.RandomStringUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -135,12 +135,11 @@ public class PlayerService implements PlayerModule {
     playerRepository.deleteById(id);
   }
 
-  private static final char[] A_Z = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
-      'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
-
   @Override
   public void forgotPassword(String email) {
-    String generatedString = RandomStringUtils.random(5, A_Z);
+    String generatedString = RandomStringUtils
+        .random(5, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+            'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
     forgotPasswordCodes.put(email, generatedString);
     log.info("reset code: {}", generatedString);
     getNotificaionModule().sendEmail(Arrays.asList(email), "Reset Code", generatedString);
@@ -167,7 +166,6 @@ public class PlayerService implements PlayerModule {
 
     Player playerToUpdate = playerRepository.findByEmail(email).get(0);
     playerToUpdate.setPassword(bCryptPasswordEncoder.encode(password));
-    playerToUpdate.setPassword(password);
 
     playerRepository.save(playerToUpdate);
   }

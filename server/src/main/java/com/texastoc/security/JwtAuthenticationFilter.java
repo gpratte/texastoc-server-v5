@@ -1,6 +1,6 @@
 package com.texastoc.security;
 
-import static org.springframework.integration.IntegrationMessageHeaderAccessor.CORRELATION_ID;
+import static com.texastoc.common.LoggingFilter.CORRELATION_ID;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.texastoc.module.player.model.Player;

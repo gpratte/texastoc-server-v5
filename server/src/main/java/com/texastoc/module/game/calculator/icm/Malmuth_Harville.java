@@ -5,6 +5,9 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * See https://github.com/gpratte/icm-calculator
+ */
 public class Malmuth_Harville {
 
   /**

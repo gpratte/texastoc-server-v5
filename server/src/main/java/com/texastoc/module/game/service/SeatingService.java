@@ -1,6 +1,5 @@
 package com.texastoc.module.game.service;
 
-
 import com.texastoc.exception.BLException;
 import com.texastoc.exception.ErrorDetail;
 import com.texastoc.module.game.model.Game;
