@@ -9,7 +9,8 @@
 /coverage
 
 # local build/run
-/server/logs/
+/server/**/logs/
+**/texastoc*.log
 
 # production
 /build
