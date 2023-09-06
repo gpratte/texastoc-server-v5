@@ -12,6 +12,7 @@
   <description>server for the texastoc application</description>
 
   <modules>
+    <module>integration</module>
     <module>server</module>
   </modules>
 
