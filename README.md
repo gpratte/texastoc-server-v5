@@ -9,12 +9,21 @@ Begin with a minimal Spring Boot application and build it up bit by bit
 by adding in the code
 from [texastoc server v4](https://github.com/gpratte/texastoc-v4-integration-testing).
 
+# Run
+
+Command line
+
+* mvn -pl server spring-boot:run
+  Integration testing
+* mvn -Dspring-boot.run.arguments="--db.h2=true --db.schema=true --db.seed=true
+  --test.allowMultipleSeasons=true" -P h2 -pl server spring-boot:run
+
 # Branches
 
 The branch labels are prefixed in the order they were developed (e.g. 01, 02, ...).
 
 Choose the branch from the github list of branches to see the readme for that branch.
 
-## Branch 11-unit-tests
+## Branch 12-integration-tests
 
-Resurrect the unit tests
+Resurrect the integration tests
