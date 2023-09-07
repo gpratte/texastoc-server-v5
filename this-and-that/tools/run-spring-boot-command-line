@@ -1,0 +1,7 @@
+
+Run spring boot from command line:
+From server directory: mvn spring-boot:run
+From project directory: mvn -pl server spring-boot:run
+
+Run mysql with all options before running ITs from project directory
+mvn -Dspring-boot.run.arguments="--db.h2=true --db.mysql=false --db.schema=true --db.seed=true --db.populate=true --test.allowMultipleSeasons=true --spring.h2.console.enabled=false" -P h2 -pl server spring-boot:run

@@ -57,6 +57,10 @@ public class Application implements CommandLineRunner {
 
   private final Random random = new Random(System.currentTimeMillis());
 
+  @Value("${db.h2:false}")
+  private boolean useH2;
+  @Value("${db.mysql:false}")
+  private boolean useMysql;
   @Value("${db.schema:false}")
   private boolean schema;
   @Value("${db.seed:false}")
@@ -73,7 +77,13 @@ public class Application implements CommandLineRunner {
   public void run(String... strings) throws Exception {
     try {
       if (schema) {
-        InputStream resource = new ClassPathResource("create_toc_schema_h2.sql").getInputStream();
+        InputStream resource = null;
+        if (useH2) {
+          resource = new ClassPathResource("create_toc_schema_h2.sql").getInputStream();
+        }
+        if (useMysql) {
+          resource = new ClassPathResource("create_toc_schema_mysql.sql").getInputStream();
+        }
         applySql(resource);
       }
       if (seed) {
