@@ -11,6 +11,7 @@
 # local build/run
 /server/**/logs/
 **/texastoc*.log
+/data
 
 # production
 /build
