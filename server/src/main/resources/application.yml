@@ -10,6 +10,7 @@ db:
   # schema: false
   # seed: false
   # populate: false
+  # repopulate: false
 
 test:
   allowMultipleSeasons: false
