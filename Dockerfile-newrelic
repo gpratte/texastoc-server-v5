@@ -1,13 +1,13 @@
 # export DB=[h2|mysql]
 # mvn -P $DB -pl application clean package
 # docker build -f Dockerfile-newrelic -t texastoc-v4-$DB-newrelic-image .
-FROM adoptopenjdk/openjdk11:latest
+FROM openjdk:17-alpine
 EXPOSE 8080
-COPY application/target/texastoc-v4-application-1.0.0.jar /application/
-ADD third-party/newrelic-java /application/
+COPY server/target/texastoc-server-v5-1.0.0.jar /server/
+ADD third-party/newrelic-java /server/
 ENTRYPOINT ["java"]
 CMD [ \
-    "-javaagent:/application/newrelic/newrelic.jar", \
+    "-javaagent:/server/newrelic/newrelic.jar", \
     "-jar", \
-    "/application/texastoc-v4-application-1.0.0.jar" \
+    "/server/texastoc-server-v5-1.0.0.jar" \
 ]

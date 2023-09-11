@@ -34,6 +34,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 @Slf4j
@@ -67,6 +68,8 @@ public class Application implements CommandLineRunner {
   private boolean seed;
   @Value("${db.populate:false}")
   private boolean populate;
+  @Value("${db.repopulate:false}")
+  private boolean repopulate;
 
 
   public static void main(String[] args) {
@@ -75,23 +78,39 @@ public class Application implements CommandLineRunner {
 
   @Override
   public void run(String... strings) throws Exception {
+    log.info("Command Line Runner started");
+    log.info("schema={}, useH2={}, useMysql={}, seed={}, populate={}", schema, useH2, useMysql,
+        seed, populate);
     try {
       if (schema) {
+        log.info("Creating schema");
         InputStream resource = null;
         if (useH2) {
+          log.info("h2 schema");
           resource = new ClassPathResource("create_toc_schema_h2.sql").getInputStream();
         }
         if (useMysql) {
+          log.info("mysql schema");
           resource = new ClassPathResource("create_toc_schema_mysql.sql").getInputStream();
         }
         applySql(resource);
       }
       if (seed) {
+        log.info("Seeding");
         InputStream resource = new ClassPathResource("seed_toc.sql").getInputStream();
         applySql(resource);
       }
       if (populate) {
+        log.info("Populating");
         createSeason();
+        log.info("Populate done");
+      }
+      if (repopulate) {
+        log.info("Repopulating");
+        InputStream resource = new ClassPathResource("delete_seasons.sql").getInputStream();
+        applySql(resource);
+        createSeason();
+        log.info("Repopulate done");
       }
     } catch (IOException e) {
       log.error("Problem initializing data", e);
@@ -106,7 +125,6 @@ public class Application implements CommandLineRunner {
       if (seasons.size() > 0) {
         return;
       }
-      log.info("Populating");
       int year;
       switch (now.getMonth()) {
         case JANUARY:
@@ -338,7 +356,12 @@ public class Application implements CommandLineRunner {
         sb.append(" ").append(line);
 
         if (line.endsWith(";")) {
-          jdbcTemplate.execute(sb.toString());
+          log.info("applying sql stmt");
+          try {
+            jdbcTemplate.execute(sb.toString());
+          } catch (DataAccessException dae) {
+            log.error("problem applying sql", dae);
+          }
           sb = new StringBuilder();
         }
       }

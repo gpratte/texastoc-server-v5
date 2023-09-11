@@ -199,6 +199,10 @@ Check that the docker container is running
 
 * `docker ps -a`
 
+Watch the database logs
+
+* `docker logs db`
+
 Use the mysql client to reset the root password, create another user and create a database.
 
 When the mysql container started and there was no data directory then mysql used the
@@ -236,7 +240,7 @@ REPOSITORY                TAG
 texastoc-v5-mysql-image   latest
 ```
 
-Bring up both the mysql and server containers
+Bring up both the mysql and server containers which will populate the season with games.
 
 * `docker compose -f docker-compose-server-mysql-populate.yml up -d`
 
@@ -317,6 +321,9 @@ The branch labels are prefixed in the order they were developed (e.g. 01, 02, ..
 
 Choose the branch from the github list of branches to see the readme for that branch.
 
-## Branch 14-build-and-run
+## Branch 15-repopulate
 
-Resurrect docker files and flesh out readme for building and running
+Repopulate by deleting the season and then populate. Works for now since the code
+expects only one season.
+
+Also update the Docker files with the V5 file structure.
