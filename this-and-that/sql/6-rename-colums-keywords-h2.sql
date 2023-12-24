@@ -10,5 +10,7 @@ alter table toc_config add yearr int not null;
 update toc_config set yearr=year;
 alter table toc_config drop column year;
 
-update version set version='5.00' where id = 1;
+ALTER TABLE player DROP INDEX email;
+
+update version set version='6.00' where id = 1;
 
