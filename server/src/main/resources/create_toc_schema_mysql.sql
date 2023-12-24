@@ -121,8 +121,6 @@ CREATE TABLE player
     password   varchar(255) DEFAULT NULL,
     PRIMARY KEY (id)
 );
-ALTER TABLE player
-    ADD UNIQUE (email);
 
 CREATE TABLE role
 (
