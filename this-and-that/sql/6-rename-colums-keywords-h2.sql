@@ -11,6 +11,7 @@ update toc_config set yearr=year;
 alter table toc_config drop column year;
 
 ALTER TABLE player DROP INDEX email;
+SHOW CREATE TABLE player;
 
 update version set version='6.00' where id = 1;
 
