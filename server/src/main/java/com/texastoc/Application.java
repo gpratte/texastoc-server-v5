@@ -151,6 +151,7 @@ public class Application implements CommandLineRunner {
     LocalDate seasonStart = season.getStart();
     LocalDate gameDate = findNextThursday(seasonStart);
 
+    Game game = null;
     while (!gameDate.isAfter(now)) {
       // pick one of the first players to be the host
       List<Player> players = getPlayerModule().getAll();
@@ -163,7 +164,7 @@ public class Application implements CommandLineRunner {
       }
 
       log.info(".");
-      Game game = gameService.create(Game.builder()
+      game = gameService.create(Game.builder()
           .hostId(player.getId())
           .date(gameDate)
           .transportRequired(false)
@@ -182,6 +183,8 @@ public class Application implements CommandLineRunner {
       }
       gameDate = findNextThursday(gameDate.plusDays(1));
     }
+
+    removeFirstPlaceFinish(game.getId());
   }
 
   private void addGamePlayers(int gameId) {
@@ -283,6 +286,17 @@ public class Application implements CommandLineRunner {
       GamePlayer gamePlayer = gamePlayers.remove(random.nextInt(gamePlayers.size()));
       gamePlayer.setPlace(place);
       gamePlayerService.updateGamePlayer(gamePlayer);
+    }
+  }
+
+  private void removeFirstPlaceFinish(int gameId) {
+    Game game = gameService.get(gameId);
+
+    for (GamePlayer gamePlayer : game.getPlayers()) {
+      if (gamePlayer.getPlace() != null && gamePlayer.getPlace() == 1) {
+        gamePlayer.setPlace(null);
+        gamePlayerService.updateGamePlayer(gamePlayer);
+      }
     }
   }
 
