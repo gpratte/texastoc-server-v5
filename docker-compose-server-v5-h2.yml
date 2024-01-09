@@ -2,7 +2,7 @@ version: '3'
 services:
   server:
     container_name: server
-    image: texastoc-v5-h2-image:latest
+    image: gprattemm/texastoc-v5-h2-image:latest
     environment:
       SPRING_APPLICATION_JSON: >
         {

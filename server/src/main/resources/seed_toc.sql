@@ -1,11 +1,11 @@
 #
 # password is password
 INSERT INTO player
-VALUES (10000, 'Gil', 'Pratte', '5121231235', 'gilpratte@texastoc.com',
+VALUES (10000, 'Gil', 'Pratte', '5121231235', 'gil@gilpratte.com',
         '$2a$10$RRxUYMgQJu99pCMsny6UP.b8I7pheP5Keq4D1JGlY9tken4LLXKi2'),
-       (20000, 'Guest', 'User', '5121231235', 'guest@texastoc.com',
+       (20000, 'Guest', 'User', '5121231235', 'guest@gilpratte.com',
         '$2a$10$RRxUYMgQJu99pCMsny6UP.b8I7pheP5Keq4D1JGlY9tken4LLXKi2'),
-       (30000, 'Guest', 'Admin', '5121231235', 'admin@texastoc.com',
+       (30000, 'Guest', 'Admin', '5121231235', 'admin@gilpratte.com',
         '$2a$10$RRxUYMgQJu99pCMsny6UP.b8I7pheP5Keq4D1JGlY9tken4LLXKi2');
 INSERT INTO role
 VALUES (10000, 'ADMIN', 10000),
